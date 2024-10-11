@@ -2,14 +2,20 @@ import asyncio
 import schedule
 import time
 import threading
+import yaml
 from services.weather_fetcher import fetch_weather_data
 from services.excel_exporter import export_to_excel
+
+with open('config/config.yaml', 'r') as file:
+    config = yaml.safe_load(file)
+
+fetch_interval_minutes = config['fetch_interval_minutes']
 
 async def scheduled_job():
     fetch_weather_data()
 
 def run_scheduled_tasks():
-    schedule.every(3).minutes.do(asyncio.run, scheduled_job)
+    schedule.every(fetch_interval_minutes).minutes.do(asyncio.run, scheduled_job)
 
     while True:
         schedule.run_pending()
