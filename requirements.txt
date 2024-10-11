@@ -1,0 +1,8 @@
+requests
+pyyaml
+SQLAlchemy
+psycopg2-binary
+openpyxl
+schedule
+asyncio
+python-dotenv

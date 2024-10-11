@@ -1,0 +1,3 @@
+fetch_interval_minutes: 3
+api_url: "https://api.open-meteo.com/v1/forecast"
+location: "Skolkovo"
